@@ -1,0 +1,125 @@
+<div class="edit-contact-container">
+  <div class="gradient-background"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-person-lines-fill me-2"></i> Contact Manager
+      </a>
+      <a href="/dashboard" class="btn btn-light btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="!loaded">
+    <div class="spinner-container">
+      <div class="spinner-gradient"></div>
+      <p class="loading-text">Loading contact details...</p>
+    </div>
+  </div>
+
+  <!-- Form State -->
+  <div class="container" *ngIf="loaded">
+    <div class="form-card">
+      <!-- Form Header -->
+      <div class="form-header">
+        <div class="form-icon-circle">
+          <i class="bi bi-pencil-fill"></i>
+        </div>
+        <h1>Edit Contact</h1>
+        <p class="form-subtitle">Update contact information</p>
+      </div>
+
+      <!-- Form Content -->
+      <form (ngSubmit)="onUpdate()" class="contact-form">
+        <!-- Name Field -->
+        <div class="form-group">
+          <label for="contactName" class="form-label">Full Name<span class="required">*</span></label>
+          <div class="input-wrapper">
+            <i class="bi bi-person-fill input-icon"></i>
+            <input 
+              type="text" 
+              id="contactName"
+              [(ngModel)]="contact.contactName" 
+              name="contactName"
+              class="form-control" 
+              placeholder="Enter contact's full name"
+              required
+            >
+          </div>
+        </div>
+
+        <!-- Phone Field -->
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone Number<span class="required">*</span></label>
+          <div class="input-wrapper">
+            <i class="bi bi-telephone-fill input-icon"></i>
+            <input 
+              type="text" 
+              id="phone"
+              [(ngModel)]="contact.phone" 
+              name="phone"
+              class="form-control" 
+              placeholder="10-digit phone number"
+              pattern="[0-9]{10}"
+              maxlength="10"
+              required
+            >
+          </div>
+          <small class="form-hint">Format: 10 digits only</small>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <div class="input-wrapper">
+            <i class="bi bi-envelope-fill input-icon"></i>
+            <input 
+              type="email" 
+              id="email"
+              [(ngModel)]="contact.email" 
+              name="email"
+              class="form-control" 
+              placeholder="contact@example.com"
+            >
+          </div>
+        </div>
+
+        <!-- Work Field -->
+        <div class="form-group">
+          <label for="work" class="form-label">Work/Company</label>
+          <div class="input-wrapper">
+            <i class="bi bi-briefcase-fill input-icon"></i>
+            <input 
+              type="text" 
+              id="work"
+              [(ngModel)]="contact.work" 
+              name="work"
+              class="form-control" 
+              placeholder="Company or work title"
+            >
+          </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="alert-info">
+          <i class="bi bi-info-circle-fill"></i>
+          <span>Changes will be saved to your account immediately</span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="submit" class="btn-submit">
+            <i class="bi bi-check-circle-fill"></i> Update Contact
+          </button>
+          <a href="/dashboard" class="btn-cancel">
+            <i class="bi bi-x-circle-fill"></i> Cancel
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="register-container">
+  <div class="gradient-background"></div>
+  
+  <div class="register-card">
+    <!-- Header -->
+    <div class="card-header">
+      <div class="icon-circle">
+        <i class="bi bi-person-plus-fill"></i>
+      </div>
+      <h1>Create Account</h1>
+      <p class="subtitle">Join and start managing your contacts</p>
+    </div>
+
+    <!-- Form -->
+    <form (ngSubmit)="onRegister()" class="register-form">
+      <!-- Name Input -->
+      <div class="form-group">
+        <label for="name" class="form-label">Full Name<span class="required">*</span></label>
+        <div class="input-wrapper">
+          <i class="bi bi-person-fill input-icon"></i>
+          <input 
+            type="text" 
+            id="name"
+            [(ngModel)]="user.name" 
+            name="name" 
+            class="form-control" 
+            [class.is-invalid]="validationErrors['name']"
+            placeholder="John Doe"
+            required
+          >
+        </div>
+        <small class="error-message" *ngIf="validationErrors['name']">
+          {{ validationErrors['name'] }}
+        </small>
+      </div>
+
+      <!-- Email Input -->
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address<span class="required">*</span></label>
+        <div class="input-wrapper">
+          <i class="bi bi-envelope-fill input-icon"></i>
+          <input 
+            type="email" 
+            id="email"
+            [(ngModel)]="user.email" 
+            name="email" 
+            class="form-control" 
+            [class.is-invalid]="validationErrors['email']"
+            placeholder="your.email@example.com"
+            required
+          >
+        </div>
+        <small class="error-message" *ngIf="validationErrors['email']">
+          {{ validationErrors['email'] }}
+        </small>
+      </div>
+
+      <!-- Password Input -->
+      <div class="form-group">
+        <label for="password" class="form-label">Password<span class="required">*</span></label>
+        <div class="input-wrapper">
+          <i class="bi bi-lock-fill input-icon"></i>
+          <input 
+            type="password" 
+            id="password"
+            [(ngModel)]="user.password" 
+            name="password" 
+            class="form-control" 
+            [class.is-invalid]="validationErrors['password']"
+            placeholder="Create a strong password"
+            required
+          >
+        </div>
+        <small class="form-hint" *ngIf="!validationErrors['password']">At least 4 characters recommended</small>
+        <small class="error-message" *ngIf="validationErrors['password']">
+          {{ validationErrors['password'] }}
+        </small>
+      </div>
+
+      <!-- Terms Checkbox -->
+      <div class="form-check mb-4">
+        <input class="form-check-input" type="checkbox" id="terms" required>
+        <label class="form-check-label" for="terms">
+          I agree to the <a href="javascript:void(0)" class="terms-link">Terms & Conditions</a>
+        </label>
+      </div>
+
+      <!-- Register Button -->
+      <button type="submit" class="btn-register">
+        <span class="btn-text">
+          <i class="bi bi-check-circle-fill"></i> Create Account
+        </span>
+      </button>
+
+      <!-- Divider -->
+      <div class="divider mt-4 mb-4">
+        <span>already registered?</span>
+      </div>
+
+      <!-- Login Button -->
+      <button type="button" class="btn-login-link" (click)="goToLogin()">
+        <i class="bi bi-box-arrow-in-right"></i> Back to Login
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <div class="card-footer">
+      <p class="footer-text">
+        Have an account?
+        <a href="javascript:void(0)" (click)="goToLogin()" class="footer-link">Sign in instead</a>
+      </p>
+    </div>
+  </div>
+</div>

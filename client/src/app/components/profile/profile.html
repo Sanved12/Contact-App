@@ -1,0 +1,114 @@
+<div class="profile-container">
+  <div class="gradient-background"></div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark mb-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-person-circle me-2"></i> My Profile
+      </a>
+      <a href="/dashboard" class="btn btn-light btn-sm">
+        <i class="bi bi-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="profile-card">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <i class="bi bi-person-fill"></i>
+        </div>
+        <h1>{{ user.name || 'User Profile' }}</h1>
+        <p class="profile-subtitle">Manage your account settings</p>
+      </div>
+
+      <!-- Profile Content -->
+      <div class="profile-content">
+        <form (ngSubmit)="onUpdateProfile()" class="profile-form">
+          <!-- Name Field -->
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name<span class="required">*</span></label>
+            <div class="input-wrapper">
+              <i class="bi bi-person-fill input-icon"></i>
+              <input 
+                type="text" 
+                id="name"
+                [(ngModel)]="user.name" 
+                name="name"
+                class="form-control" 
+                placeholder="Enter your full name"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address<span class="required">*</span></label>
+            <div class="input-wrapper">
+              <i class="bi bi-envelope-fill input-icon"></i>
+              <input 
+                type="email" 
+                id="email"
+                [(ngModel)]="user.email" 
+                name="email"
+                class="form-control" 
+                placeholder="your.email@example.com"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="password" class="form-label">Change Password</label>
+            <div class="input-wrapper">
+              <i class="bi bi-lock-fill input-icon"></i>
+              <input 
+                type="password" 
+                id="password"
+                [(ngModel)]="user.password" 
+                name="password"
+                class="form-control" 
+                placeholder="Leave blank to keep current password"
+              >
+            </div>
+            <small class="form-hint">Only fill this if you want to change your password</small>
+          </div>
+
+          <!-- Save Info Box -->
+          <div class="alert-info">
+            <i class="bi bi-info-circle-fill"></i>
+            <span>Your profile changes will be saved to your account</span>
+          </div>
+
+          <!-- Buttons -->
+          <div class="button-group">
+            <button type="submit" class="btn-submit">
+              <i class="bi bi-check-circle-fill"></i> Save Changes
+            </button>
+            <a href="/dashboard" class="btn-cancel">
+              <i class="bi bi-x-circle-fill"></i> Discard
+            </a>
+          </div>
+        </form>
+
+        <!-- Account Info Section -->
+        <div class="account-info">
+          <h3 class="info-title">Account Information</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Account ID</span>
+              <span class="info-value">{{ user.id }}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Member Since</span>
+              <span class="info-value">{{ user.createdAt ? (user.createdAt | date:'MMM d, yyyy') : 'Recently' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
