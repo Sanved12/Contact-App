@@ -16,7 +16,7 @@ Contact App allows users to:
 
 - **Frontend**: Angular 18 + TypeScript
 - **Backend**: Spring Boot 4.0.3 + Java 17
-- **Database**: H2 (default, configurable)
+- **Database**: PostgreSQL
 - **Build Tool**: Maven (backend), npm (frontend)
 
 ## Project Structure
